@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>Settings</h1>
+    <h2>PID</h2>
+    <!-- Roll -->
+    <form method=post action='/pid' method='post'>
+        <label for='roll_p'>Roll P:</label>
+        <input type='number' id='roll_p' name='roll_p' value='{{.RollP}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='roll_i'>Roll I:</label>
+        <input type='number' id='roll_i' name='roll_i' value='{{.RollI}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='roll_d'>Roll D:</label>
+        <input type='number' id='roll_d' name='roll_d' value='{{.RollD}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <br>
+    <!-- Pitch -->
+    <form method=post action='/pid' method='post'>
+        <label for='pitch_p'>Pitch P:</label>
+        <input type='number' id='pitch_p' name='pitch_p' value='{{.PitchP}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='pitch_i'>Pitch I:</label>
+        <input type='number' id='pitch_i' name='pitch_i' value='{{.PitchI}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='pitch_d'>Pitch D:</label>
+        <input type='number' id='pitch_d' name='pitch_d' value='{{.PitchD}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <br>
+    <!-- Yaw -->
+    <form method=post action='/pid' method='post'>
+        <label for='yaw_p'>Yaw P:</label>
+        <input type='number' id='yaw_p' name='yaw_p' value='{{.YawP}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='yaw_i'>Yaw I:</label>
+        <input type='number' id='yaw_i' name='yaw_i' value='{{.YawI}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='yaw_d'>Yaw D:</label>
+        <input type='number' id='yaw_d' name='yaw_d' value='{{.YawD}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <br>
+    <!-- Height -->
+    <form method=post action='/pid' method='post'>
+        <label for='height_p'>Height P:</label>
+        <input type='number' id='height_p' name='height_p' value='{{.HeightP}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='height_i'>Height I:</label>
+        <input type='number' id='height_i' name='height_i' value='{{.HeightI}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/pid'>
+        <label for='height_d'>Height D:</label>
+        <input type='number' id='height_d' name='height_d' value='{{.HeightD}}' min='0' max='65535' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <h2>Trim</h2>
+    <form method=post action='/trim'>
+        <label for='roll_trim'>Roll Trim:</label>
+        <input type='number' id='roll_trim' name='roll_trim' value='{{.RollTrim}}' min='-32767' max='32768' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/trim'>
+        <label for='pitch_trim'>Pitch Trim:</label>
+        <input type='hidden' id='type' name='type' value='pitch_trim'>
+        <input type='number' id='pitch_trim' name='pitch_trim' value='{{.PitchTrim}}' min='-32767' max='32768' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <form method=post action='/trim'>
+        <label for='yaw_trim'>Yaw Trim:</label>
+        <input type='number' id='yaw_trim' name='yaw_trim' value='{{.YawTrim}}' min='-32767' max='32768' step='1'>
+        <input type='submit' class='submit' value='Submit'>
+    </form>
+    <script>
+        var buttons = Array.from(document.getElementsByClassName('submit'));
+        buttons.forEach(button => {
+            button.onclick = function () {
+                setTimeout(() => {
+                    buttons.forEach(button => {
+                        button.disabled = true;
+                    });
+                }, 100);
+                setTimeout(() => {
+                    buttons.forEach(button => {
+                        button.disabled = false;
+                    });
+                }, 1000);
+            };
+        });
+    </script>
+</body>
+
+</html>
